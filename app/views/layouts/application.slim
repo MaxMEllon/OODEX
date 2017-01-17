@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    title
+      | TEE
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application',
+      media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .navbar-fixed
+      nav.blue
+        .row
+          .col.s12
+            .nav-wrapper
+              = link_to 'TEE', '#', {class: 'brand-logo'}
+              ul.right
+                li
+                  = link_to '#', 'Sample'
+                li
+                  = link_to '#', 'Sample'
+                li
+                  = link_to '#', 'Sample'
+    .row
+      = yield
+    footer.page-footer
+      .container
+        .row
+          .col.l12.s12
+            h5.white-text
+              | Java初学者のためのチーム開発手法教育システム
+              em
+                | TEE
+            p.white-text.text-lighten-4
+              | You can use rows and columns here to organize
+              | your footer content.
+      .footer-copy-right
+        .container
+          p.white-text.text-lighten-4
+            | © 2017 Tominaga labo.
