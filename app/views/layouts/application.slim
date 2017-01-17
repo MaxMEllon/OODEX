@@ -14,13 +14,18 @@ html
           .col.s12
             .nav-wrapper
               = link_to 'TEE', '#', {class: 'brand-logo'}
-              ul.right
-                li
-                  = link_to 'Sample', '#'
-                li
-                  = link_to 'Sample', '#'
-                li
-                  = link_to 'Sample', '#'
+              - if user_signed_in?
+                ul.right
+                  li
+                    = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'a'
+              - else
+                ul.right
+                  li
+                    = link_to 'Sample', '#'
+                  li
+                    = link_to 'Sample', '#'
+                  li
+                    = link_to 'Sample', '#'
     .row
       = yield
     footer.page-footer
