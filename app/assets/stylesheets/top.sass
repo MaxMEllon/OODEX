@@ -9,3 +9,22 @@ footer
   height: 400px
 textarea#inquiry
   height: 240px
+
+.background-img
+  background: url('/background.jpg') no-repeat center
+  background-size: cover
+  position: relative
+  overflow: hidden
+  &:before
+    content: ''
+    background: inherit
+    -webkit-filter: blur(30px)
+    -moz-filter: blur(30px)
+    -o-filter: blur(30px)
+    -ms-filter: blur(30px)
+    filter: blur(30px)
+    position: absolute
+    left: -30px
+    right: -30px
+    bottom: -30px
+    z-index: -1
