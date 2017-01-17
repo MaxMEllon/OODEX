@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-require "net/http"
-require "slack/incoming/webhooks"
+require 'net/http'
+require 'slack/incoming/webhooks'
 
 module TEE
   class Slacker
@@ -13,10 +13,10 @@ module TEE
       slack = Slack::Incoming::Webhooks.new(
         @url,
         channel: @channel,
-        username: "TEE-system",
-        icon_emoji: ":tea:"
+        username: 'TEE-system',
+        icon_emoji: ':tea:'
       )
-      slack.post "システムからの通知です", attachments: attachments unless attachments.nil?
+      slack.post 'システムからの通知です', attachments: attachments unless attachments.nil?
     end
   end
 end
