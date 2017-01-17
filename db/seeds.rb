@@ -1,4 +1,5 @@
 
+# frozen_string_literal: true
 User.create(
   email: 'TEE@stu.eng.kagawa-u.ac.jp',
   password: 'hogehoge',

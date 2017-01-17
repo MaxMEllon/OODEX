@@ -1,8 +1,8 @@
+# frozen_string_literal: true
 require_relative './concerns/slack'
 
 class TopController < ApplicationController
-  def inquiry
-  end
+  def inquiry; end
 
   def post_inquiry
     content = params['content']
@@ -13,14 +13,14 @@ class TopController < ApplicationController
 
   private
 
-  def generate_attachment_of_slack(content)
-    [{
-      color: '#3939ff',
-      fields: [{
-        title: 'システムからの問い合わせ',
-        value: content,
-        short: true
+    def generate_attachment_of_slack(content)
+      [{
+        color: '#3939ff',
+        fields: [{
+          title: 'システムからの問い合わせ',
+          value: content,
+          short: true
+        }]
       }]
-    }]
-  end
+    end
 end

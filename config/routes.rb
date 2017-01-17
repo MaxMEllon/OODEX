@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
@@ -12,5 +13,4 @@ Rails.application.routes.draw do
   get 'my', to: 'my#index', as: :my
   get 'inquiry', to: 'top#inquiry', as: :inquiry
   post 'inquiry/post', to: 'top#post_inquiry', as: :post_inquiry
-
 end
