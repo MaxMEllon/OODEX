@@ -1,8 +1,8 @@
+# frozen_string_literal: true
 require_relative "./concerns/slack"
 
 class TopController < ApplicationController
-  def inquiry
-  end
+  def inquiry; end
 
   def post_inquiry
     content = params["content"]

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "net/http"
 require "slack/incoming/webhooks"
 
@@ -15,9 +16,7 @@ module TEE
         username: "TEE-system",
         icon_emoji: ":tea:"
       )
-      unless attachments.nil?
-        slack.post "システムからの通知です", attachments: attachments
-      end
+      slack.post "システムからの通知です", attachments: attachments unless attachments.nil?
     end
   end
 end
