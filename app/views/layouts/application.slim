@@ -8,6 +8,9 @@ html
       media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    - if ENV['RAILS_ENV'] != 'production'
+      = render 'layouts/reborn'
+
     .navbar-fixed
       nav.blue
         .row
@@ -17,7 +20,8 @@ html
               - if user_signed_in?
                 ul.right
                   li
-                    = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'a'
+                    = link_to 'ログアウト', destroy_user_session_path,
+                      method: :delete, class: 'a'
               - else
                 ul.right
                   li

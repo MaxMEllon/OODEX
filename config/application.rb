@@ -23,7 +23,6 @@ module TEE
     config.active_record.time_zone_aware_types = [:datetime, :time]
     config.sass.preferred_syntax = :sass
     config.sass.cache = true
-    config.rack_dev_mark.enable = !Rails.env.production?
 
     config.generators do |g|
       g.helper false

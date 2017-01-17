@@ -40,6 +40,7 @@ gem 'react_on_rails'
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
 gem 'sinatra', require: false
+gem 'slack-incoming-webhooks'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
