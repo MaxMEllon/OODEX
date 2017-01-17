@@ -1,20 +1,32 @@
 .top-container
   .col.m1
   .col.m5
-    .top
-      .card.blue-grey.darken-1
-        .card-content.white-text
-          .card-title
+    .card.blue-grey.darken-1
+      .card-content.white-text
+        .card-title
+          span
             | ようこそ
-            em 
-              | 　TEE
+          em 
+            | 　TEE
+          span
             | 　へ
-          p
-            | このアプリケーションは、Java初学者向きのチームにおける
-            | 開発手法を学ぶための教育システムです
-          p
-            | This Application is Education System for Studying the
-            | Team Development Style for Java Beginner Enginners.
+        p
+          | このアプリケーションは、Java初学者向きのチームにおける
+          | 開発手法を学ぶための教育システムです
+        p
+          | This Application is Education System for Studying the
+          | Team Development Style for Java Beginner Enginners.
+    .card
+      .card-content
+        .card-title
+          span
+            | 管理者に問い合わせる
+        p
+          | ログインできない人はこちらから問い合わせてください
+      .card-action
+        = link_to inquiry_path
+          | 問い合わせ
+
   .col.m5
     .row
       .card

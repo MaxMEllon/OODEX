@@ -14,6 +14,8 @@ require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
 
+Dotenv::Railtie.load
+
 module TEE
   class Application < Rails::Application
     config.time_zone = 'Tokyo'
