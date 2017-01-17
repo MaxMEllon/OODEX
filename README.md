@@ -5,7 +5,7 @@
 About
 ---
 
-**Team Education Exrc for Software enginnering.**
+**T**eam **E**ducation **E**xrc for Software enginnering.
 
 Environment
 ---
