@@ -8,6 +8,7 @@ class TopController < ApplicationController
     content = params['content']
     attachments = generate_attachment_of_slack(content)
     SlackWorker.perform_async(attachments)
+    flash['notice'] = '投稿しました'
     redirect_to root_path
   end
 
