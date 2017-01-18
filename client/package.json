@@ -7,7 +7,8 @@
     "npm": "4.1.1"
   },
   "scripts": {
-    "lint": "eslint_d --fix src/",
+    "lint": "eslint src/",
+    "lint:fast": "eslint_d --fix src/",
     "build:test": "webpack --config webpack.config.js",
     "build:production": "NODE_ENV=production webpack --config webpack.config.js",
     "build:development": "webpack -w --config webpack.config.js"
