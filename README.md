@@ -2,6 +2,15 @@
 
 ![](./.github/ss.png)
 
+Status
+---
+
+| type | badge |
+|---|---|
+| circle-ci | [![CircleCI](https://img.shields.io/circleci/project/github/SLP-KBIT/TEE)](https://circleci.com/gh/SLP-KBIT/TEE) |
+| codeclimate | [![Code Climate](https://img.shields.io/codeclimate/github/SLP-KBIT/TEE.svg)](https://codeclimate.com/github/SLP-KBIT/TEE) |
+| hakiri | [![security](https://hakiri.io/github/SLP-KBIT/TEE/master.svg)](https://hakiri.io/github/SLP-KBIT/TEE/master) |
+
 About
 ---
 
