@@ -1,5 +1,6 @@
 /**
  *= require materialize-css/dist/css/materialize.min.css
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */

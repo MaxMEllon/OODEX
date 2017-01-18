@@ -24,6 +24,7 @@ module TEE
     config.active_record.time_zone_aware_types = [:datetime, :time]
     config.sass.preferred_syntax = :sass
     config.sass.cache = true
+    config.i18n.default_locale = :ja
 
     config.generators do |g|
       g.helper false
