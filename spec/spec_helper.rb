@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 ENV['RAILS_ENV'] ||= 'test'
 
@@ -7,7 +8,7 @@ require 'shoulda/matchers'
 require 'rspec/retry'
 require 'rubocop'
 
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '*', '*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = false

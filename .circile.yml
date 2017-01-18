@@ -1,0 +1,18 @@
+test:
+  override:
+    - "bundle exec bin/rubocop": { parallel: true }
+    - "RAILS_ENV=test bundle exec rails db:migrate:reset"
+    - bundle exec rspec
+    # front
+    - cd client && npm run lint
+    
+machine:
+  ruby:
+    version: 2.3.0
+  node:
+    version: 6.8.0
+  timezone: Asia/Tokyo
+
+dependencies:
+  pre:
+    - gem install bundler
