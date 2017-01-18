@@ -27,7 +27,7 @@ Start Deveopment
 ---
 
 ```bash
-$ bundle install
+$ bundle install && yarn
 $ cd client && yarn && cd ..
 $ postgres -D /usr/local/var/postgres
 $ redis-server
