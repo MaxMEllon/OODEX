@@ -3,6 +3,7 @@ test:
     - "bundle exec bin/rubocop": { parallel: true }
     - "RAILS_ENV=test bundle exec rails db:migrate:reset"
     - bundle exec rspec
+    - bundle exec codeclimate-test-reporter
     # front
     - cd client && npm install && npm run lint
     
