@@ -6,8 +6,8 @@ Status
 ---
 
 | type | badge |
-|---|---|
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8ce1eaa6faef4435925db6e12d845b3b)](https://www.codacy.com/app/MaxMEllon/TEE?utm_source=github.com&utm_medium=referral&utm_content=SLP-KBIT/TEE&utm_campaign=badger)
+|:---:|:---:|
+| codacy | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8ce1eaa6faef4435925db6e12d845b3b)](https://www.codacy.com/app/MaxMEllon/TEE?utm_source=github.com&utm_medium=referral&utm_content=SLP-KBIT/TEE&utm_campaign=badger) |
 | circle-ci | [![CircleCI](https://img.shields.io/circleci/project/github/SLP-KBIT/TEE.svg)](https://circleci.com/gh/SLP-KBIT/TEE) |
 | codeclimate | [![Code Climate](https://img.shields.io/codeclimate/github/SLP-KBIT/TEE.svg)](https://codeclimate.com/github/SLP-KBIT/TEE) |
 | hakiri | [![security](https://hakiri.io/github/SLP-KBIT/TEE/master.svg)](https://hakiri.io/github/SLP-KBIT/TEE/master) |
