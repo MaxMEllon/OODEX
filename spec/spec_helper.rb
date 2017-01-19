@@ -7,6 +7,9 @@ require 'rspec/rails'
 require 'shoulda/matchers'
 require 'rspec/retry'
 require 'rubocop'
+require 'simplecov'
+
+SimpleCov.start
 
 Dir[Rails.root.join('spec', 'support', '*', '*.rb')].each { |f| require f }
 
@@ -18,7 +21,7 @@ RSpec.configure do |config|
   config.verbose_retry = true
   config.display_try_failure_messages = true
 
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
   [:controller, :view, :request].each do |type|
     config.include ::Rails::Controller::Testing::TestProcess, type: type
