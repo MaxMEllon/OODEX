@@ -2,6 +2,11 @@
 
 ![](./.github/ss.png)
 
+About
+---
+
+**T**eam **E**ducation **E**xrc for Software enginnering.
+
 Status
 ---
 
@@ -12,10 +17,11 @@ Status
 | codeclimate | [![Code Climate](https://img.shields.io/codeclimate/github/SLP-KBIT/TEE.svg)](https://codeclimate.com/github/SLP-KBIT/TEE) |
 | hakiri | [![security](https://hakiri.io/github/SLP-KBIT/TEE/master.svg)](https://hakiri.io/github/SLP-KBIT/TEE/master) |
 
-About
+Throughput
 ---
 
-**T**eam **E**ducation **E**xrc for Software enginnering.
+[![Throughput Graph](https://graphs.waffle.io/SLP-KBIT/TEE/throughput.svg)](https://waffle.io/SLP-KBIT/TEE)
+
 
 Environment
 ---
