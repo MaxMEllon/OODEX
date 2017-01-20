@@ -29,10 +29,10 @@ Environment
 - dependency libraries
   - `redis-server` >= 3.0.6
   - `rails` == 5.0
-  - `ruby` >= 2.3.0
+  - `ruby` >= 2.4.0
   - `bundler` >= 1.12.3
-  - `node` >= 6.8
-  - `yarn` >= 0.17.10
+  - `node` >= 6.9
+  - `yarn` >= 0.17.10 || `npm` >= 4.1.1
   - `react` >= 15.0
 
 - dot-env
