@@ -31,6 +31,7 @@ group :development do
 end
 
 # gem 'jbuilder', '~> 2.5'
+gem 'annotate'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'dotenv-rails'
