@@ -27,12 +27,20 @@ ActiveRecord::Schema.define(version: 20170119180310) do
     t.boolean  "is_active",  default: true, null: false
     t.string   "name",                      null: false
     t.integer  "role",       default: 0,    null: false
-    t.integer  "user_id",                   null: false
-    t.integer  "contest_id",                null: false
+    t.integer  "user_id"
+    t.integer  "team_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.index ["contest_id"], name: "index_players_on_contest_id", using: :btree
+    t.index ["team_id"], name: "index_players_on_team_id", using: :btree
     t.index ["user_id"], name: "index_players_on_user_id", using: :btree
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "contest_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contest_id"], name: "index_teams_on_contest_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,4 +61,6 @@ ActiveRecord::Schema.define(version: 20170119180310) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "players", "teams"
+  add_foreign_key "players", "users"
 end
