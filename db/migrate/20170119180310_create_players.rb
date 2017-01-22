@@ -5,13 +5,10 @@ class CreatePlayers < ActiveRecord::Migration[5.0]
       t.boolean :is_active, default: true, null: false
       t.string :name, null: false
       t.integer :role, default: 0, null: false
-      t.integer :user_id, null: false
-      t.integer :contest_id, null: false
+      t.references :user, index: true, foreign_key: true
+      t.references :team, index: true, foreign_key: true
 
       t.timestamps
     end
-
-    add_index :players, :user_id
-    add_index :players, :contest_id
   end
 end
