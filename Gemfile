@@ -19,8 +19,8 @@ end
 group :test do
   gem 'rails-controller-testing'
   gem 'shoulda-matchers', '~> 3.1', require: false
-  gem "simplecov"
-  gem "codeclimate-test-reporter", "~> 1.0.0"
+  gem 'simplecov'
+  gem 'codeclimate-test-reporter', '~> 1.0.0'
 end
 
 group :development do

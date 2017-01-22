@@ -40,5 +40,3 @@ RSpec.configure do |config|
 
   config.example_status_persistence_file_path = 'examples.txt'
 end
-
-ActiveRecord::Migration.maintain_test_schema!

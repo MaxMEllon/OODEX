@@ -3,6 +3,7 @@ AllCops:
   Include:
     - '**/Rakefile'
     - '**/config.ru'
+    - '**/Gemfile'
   Exclude:
     - 'db/**/*'
     - 'bin/*'
@@ -128,3 +129,6 @@ Lint/RequireParentheses:
 
 LineLength:
   Max: 100
+
+Lint/Degbugger:
+  Enabled: false
