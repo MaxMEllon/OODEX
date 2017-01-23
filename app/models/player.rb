@@ -22,4 +22,6 @@
 class Player < ApplicationRecord
   belongs_to :user
   belongs_to :team
+  has_many :submissions
+  has_many :questions, through: :submissions
 end

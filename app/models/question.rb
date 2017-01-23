@@ -17,4 +17,6 @@
 
 class Question < ApplicationRecord
   belongs_to :subject
+  has_many :submissions
+  has_many :players, through: :submissions
 end
