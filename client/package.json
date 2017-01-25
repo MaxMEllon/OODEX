@@ -11,7 +11,8 @@
     "lint:fast": "eslint_d --fix src/",
     "build:test": "webpack --config webpack.config.js",
     "build:production": "NODE_ENV=production webpack --config webpack.config.js",
-    "build:development": "webpack -w --config webpack.config.js"
+    "build:development": "webpack -w --config webpack.config.js",
+    "build:server": "node server.js"
   },
   "cacheDirectories": [
     "node_modules",
@@ -49,6 +50,11 @@
     "eslint-plugin-import": "2",
     "eslint-plugin-jsx-a11y": "2",
     "eslint-plugin-react": "6",
-    "eslint_d": "^4.2.1"
+    "eslint_d": "^4.2.1",
+    "express": "^4.14.0",
+    "react-hot-loader": "v3.0.0-beta.6",
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-hot-middleware": "^2.15.0",
+    "webpack-livereload-plugin": "^0.10.0"
   }
 }

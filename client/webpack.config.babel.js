@@ -1,11 +1,20 @@
 const webpack = require('webpack');
 const path = require('path');
+const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 const devBuild = process.env.NODE_ENV !== 'production';
 const nodeEnv = devBuild ? 'development' : 'production';
 
 const config = {
-  entry: [
+  entry: devBuild ? [
+    'es5-shim/es5-shim',
+    'es5-shim/es5-sham',
+    'webpack/hot/only-dev-server',
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr',
+    'babel-polyfill',
+    './app/index.js',
+  ] : [
     'es5-shim/es5-shim',
     'es5-shim/es5-sham',
     'babel-polyfill',
@@ -14,7 +23,8 @@ const config = {
 
   output: {
     filename: 'webpack-bundle.js',
-    path: '../app/assets/webpack',
+    path: '/../public',
+    publicPath: 'http://localhost:3000/'
   },
 
   resolve: {
@@ -39,7 +49,7 @@ const config = {
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
+        loaders: devBuild ? ['babel-loader'] : ['babel-loader'],
         exclude: /node_modules/,
       },
     ],
@@ -53,6 +63,11 @@ const prodctionPlugins = [
 if (devBuild) {
   // dev
   config.devtool = 'eval-source-map';
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
+  config.plugins.push(new LiveReloadPlugin({
+    appendScriptTag: true,
+    ignore: null,
+  }));
 } else {
   // prod
   prodctionPlugins.forEach(plugin => config.plugins.push(plugin));
