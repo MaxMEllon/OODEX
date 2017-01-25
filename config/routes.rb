@@ -39,6 +39,10 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+  namespace :admin do
+    resources :contests
+  end
+
   get 'my', to: 'my#index', as: :my
   get 'inquiry', to: 'top#inquiry', as: :inquiry
   post 'inquiry/post', to: 'top#post_inquiry', as: :post_inquiry

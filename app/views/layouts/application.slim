@@ -22,9 +22,16 @@ html
         .row
           .col.s12
             .nav-wrapper
-              = link_to 'TEE', '#', {class: 'brand-logo'}
+              - path = user_signed_in? ? my_path : root_path
+              = link_to 'TEE', path, {class: 'brand-logo'}
               - if user_signed_in?
                 ul.right
+                  - if current_user.admin?
+                      li
+                        = link_to new_admin_contest_path do
+                          i.fa.fa-user
+                          |
+                            コンテストを作成する
                   li
                     = link_to 'ログアウト', destroy_user_session_path,
                       method: :delete, class: 'a'

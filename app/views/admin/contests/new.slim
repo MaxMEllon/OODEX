@@ -1,0 +1,43 @@
+sass:
+  #contest_start_at
+    color: black
+  label#contest_start_at_label.active
+    color: #26a69a !important
+  #contest_end_at
+    color: black
+  label#contest_end_at_label.active
+    color: #26a69a !important
+
+.admin-contest-new
+  .col.m1
+  .col.m10
+    .card
+      .row.card-content.contest-new-form
+        .card-title
+          span
+            | コンテストを作成する
+        hr
+        = form_for(@contest, url: {action: :create}, remote: true) do |f|
+          .input-field.col.s12
+            = f.text_field :title
+            label for='contest_title'
+              | タイトル
+          .input-field.col.s6
+            = f.text_field :start_at, class: 'start-at-date-picker'
+            label for='contest_start_at' id='contest_start_at_label'
+              | 開始日
+          .input-field.col.s6
+            = f.text_field :end_at, class: 'end-at-date-picker'
+            label for='contest_endt_at' id='contest_end_at_label'
+              | 終了日
+          input.login-btn.waves-effect.waves-light.btn.right[
+            type='submit'
+            name='commit'
+            value='登録する'
+            ]
+  .col.m1
+
+
+javascript:
+  flatpickr('.start-at-date-picker', {});
+  flatpickr('.end-at-date-picker', {});

@@ -1,4 +1,8 @@
 # frozen_string_literal: true
 class MyController < ApplicationController
-  def index; end
+  before_action :authenticate_user!
+
+  def index
+    @contests = Contest.all
+  end
 end

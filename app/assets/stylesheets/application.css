@@ -1,6 +1,21 @@
 /**
+ *= require flatpickr/dist/flatpickr.min.css
  *= require materialize-css/dist/css/materialize.min.css
+ *= require nprogress/nprogress.css
  *= require font-awesome
  *= require_tree .
  *= require_self
  */
+
+#nprogress .bar {
+  background: #d22 !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #ff1a5a,  0 0 5px #ff1a5a !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #d22 !important;
+  border-left-color: #d22 !important;
+}
