@@ -1,12 +1,34 @@
 import React from 'react';
 import ReactOnRails from 'react-on-rails';
+import { render } from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
+import Sample from './components/Sample';
 
-const Sample = () => (
-  <div>hoge</div>
-);
+const RootDOM = () => {
+  return (
+    <AppContainer>
+      <Sample />
+    </AppContainer>
+  );
+}
 
-window.Sample = Sample;
+window.onload = () => {
+  setTimeout(() => {
+    console.log('turbolinks:loaded');
+    const main = document.getElementById('main');
+    if (main) {
+      render(<RootDOM />, main);
+    }
+    if (module.hot) {
+      module.hot.accept('./components/Sample', () => {
+        render(<RootDOM />, document.getElementById('main'));
+      });
+    }
+  });
+}
 
-ReactOnRails.register({
-  Sample,
-});
+// window.Sample = Sample;
+//
+// ReactOnRails.register({
+//   Sample,
+// });

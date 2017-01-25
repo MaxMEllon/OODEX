@@ -7,10 +7,16 @@ html
     = stylesheet_link_tag 'application',
       media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+    /! For Hot-module-replacement
+    - if ENV['RAILS_ENV'] == 'production'
+      script src="/webpack-bundle.js"
+    - else
+      script src="http://localhost:3000/webpack-bundle.js"
+
   body
     - if ENV['RAILS_ENV'] != 'production'
       = render 'layouts/reborn'
-
     .navbar-fixed
       nav.blue
         .row

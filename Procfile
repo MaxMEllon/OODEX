@@ -1,2 +1,4 @@
-web: rails s -p 3000
-client: sh -c 'rm app/assets/webpack/* || true && cd client && npm run build:development'
+web: rails s -p 5000
+redis: redis-server
+sidekiq: bundle exec sidekiq
+client : cd client && node server.js
