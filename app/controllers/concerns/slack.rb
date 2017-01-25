@@ -2,21 +2,19 @@
 require 'net/http'
 require 'slack/incoming/webhooks'
 
-module TEE
-  class Slacker
-    def initialize(url, channel)
-      @url = url
-      @channel = channel
-    end
+class TEE::Slacker
+  def initialize(url, channel)
+    @url = url
+    @channel = channel
+  end
 
-    def post(attachments)
-      slack = Slack::Incoming::Webhooks.new(
-        @url,
-        channel: @channel,
-        username: 'TEE-system',
-        icon_emoji: ':tea:'
-      )
-      slack.post 'システムからの通知です', attachments: attachments unless attachments.nil?
-    end
+  def post(attachments)
+    slack = Slack::Incoming::Webhooks.new(
+      @url,
+      channel: @channel,
+      username: 'TEE-system',
+      icon_emoji: ':tea:'
+    )
+    slack.post 'システムからの通知です', attachments: attachments unless attachments.nil?
   end
 end
