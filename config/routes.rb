@@ -39,6 +39,12 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+  namespace :admin do
+    resources :contests, only: [:new, :create]
+    patch '/active/:contest_id' => 'contests#active', as: :contest_active
+    patch '/passive/:contest_id' => 'contests#passive', as: :contest_passive
+  end
+
   get 'my', to: 'my#index', as: :my
   get 'inquiry', to: 'top#inquiry', as: :inquiry
   post 'inquiry/post', to: 'top#post_inquiry', as: :post_inquiry

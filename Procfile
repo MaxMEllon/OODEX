@@ -1,4 +1,4 @@
-web: rails s -p 5000
+db: postgres -D /usr/local/var/postgres
 redis: redis-server
 sidekiq: bundle exec sidekiq
-client : cd client && node server.js
+client: rm -rf public/webpack-bundle.js && cd client && node server.js

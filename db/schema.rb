@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20170123211559) do
   enable_extension "plpgsql"
 
   create_table "contests", force: :cascade do |t|
+    t.string   "title",                      null: false
     t.datetime "start_at",                   null: false
     t.datetime "end_at",                     null: false
     t.boolean  "is_active",  default: false, null: false

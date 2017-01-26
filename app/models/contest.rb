@@ -15,4 +15,8 @@
 class Contest < ApplicationRecord
   has_many :teams
   has_many :subjects
+
+  def active?
+    is_active
+  end
 end

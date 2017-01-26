@@ -22,6 +22,7 @@ RSpec.configure do |config|
   config.display_try_failure_messages = true
 
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include FactoryGirl::Syntax::Methods
 
   [:controller, :view, :request].each do |type|
     config.include ::Rails::Controller::Testing::TestProcess, type: type
