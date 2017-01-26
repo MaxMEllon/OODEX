@@ -62,32 +62,3 @@ sass:
               = link_to(admin_contest_path(contest.id), method: :delete) do
                 i.fa.fa-remove
                 | 削除
-
-  / h4 コンテスト一覧
-  / table.striped.bordered
-  /   thead
-  /     tr
-  /       - if current_user.admin?
-  /         th.ui data-field="edit" 編集
-  /         th.ui data-field="remove" 削除
-  /       th data-field="title" タイトル
-  /       th.date data-field="start_at" 開始日時
-  /       th.date data-field="end_at" 終了日時
-  /   tbody
-  /     - @contests.each do |contest|
-  /       tr
-  /         - if current_user.admin?
-  /           td
-  /             .btn-floating.waves-effect.waves-light.link
-  /               = link_to edit_admin_contest_path(contest.id) do
-  /                 i.fa.fa-edit
-  /           td
-  /             .btn-floating.waves-effect.waves-light.link.red
-  /               = link_to(admin_contest_path(contest.id), method: :delete) do
-  /                 i.fa.fa-remove
-  /         td
-  /           span.title = contest.title
-  /         td
-  /           span = contest.start_at.strftime('%Y/%m/%d')
-  /         td
-  /           span = contest.end_at.strftime('%Y/%m/%d')
