@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
   end
 
   def before_user_not_admin!
-    return if current_user.admin?
+    return if !current_user.nil? && current_user.admin?
     flash['alert'] = 'アクセスに失敗しました'
-    redirect_to my_path
+    redirect_to my_path, status: '401', message: 'Unauthalized'
   end
 end

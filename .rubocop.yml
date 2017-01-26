@@ -1,5 +1,6 @@
 AllCops:
   TargetRubyVersion: 2.3
+  DisplayCopNames: true
   Include:
     - '**/Rakefile'
     - '**/config.ru'
@@ -10,6 +11,14 @@ AllCops:
     - 'config/**/*'
     - 'script/**/*'
     - 'vendor/bundle/**/*'
+
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
 
 Rails:
   Enabled: true
