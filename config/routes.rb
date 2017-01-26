@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :contests
+    resources :contests, only: [:new, :create]
     patch '/active/:contest_id' => 'contests#active', as: :contest_active
     patch '/passive/:contest_id' => 'contests#passive', as: :contest_passive
   end
