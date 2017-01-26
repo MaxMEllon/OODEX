@@ -3,6 +3,6 @@ class MyController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @contests = Contest.all
+    @contests = Contest.order(:start_at)
   end
 end

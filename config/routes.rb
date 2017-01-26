@@ -41,6 +41,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :contests
+    get '/active/:contest_id' => 'contests#active', as: :contest_active
+    get '/passive/:contest_id' => 'contests#passive', as: :contest_passive
   end
 
   get 'my', to: 'my#index', as: :my

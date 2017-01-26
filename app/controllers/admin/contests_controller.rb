@@ -21,6 +21,20 @@ class Admin::ContestsController < ApplicationController
     redirect_to my_path
   end
 
+  def active
+    @content = Contest.find(params[:contest_id])
+    @content.is_active = true
+    @content.save
+    redirect_to my_path
+  end
+
+  def passive
+    @content = Contest.find(params[:contest_id])
+    @content.is_active = false
+    @content.save
+    redirect_to my_path
+  end
+
   private
 
     def set_flash
@@ -36,12 +50,12 @@ class Admin::ContestsController < ApplicationController
     def set_start_at
       is_empty = params['contest']['start_at'].blank?
       @flash.push('開始日時') if is_empty
-      @start_at = DateTime.parse.iso8601(params['contest']['start_at']) unless is_empty
+      @start_at = Time.zone.parse(params['contest']['start_at']) unless is_empty
     end
 
     def set_end_at
       is_empty = params['contest']['end_at'].blank?
       @flash.push('終了日時') if is_empty
-      @end_at = DateTime.parse.iso8601(params['contest']['end_at']) unless is_empty
+      @end_at = Time.zone.parse(params['contest']['end_at']) unless is_empty
     end
 end

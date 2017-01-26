@@ -1,36 +1,93 @@
 sass:
-  .ui
-    width: 5%
-  .link
-    > a
-      color: white
   .btn
     padding: 0 10px 0 10px
+  .date
+    color: #d2d1d1
+  .status
+    padding-left: 24px
+    position: absolute
+    text-align: center
+    left: -3px
+    top: 60px
+  .secondary-content
+    > a
+      font-size: 16px
+  .contest-list
+    margin-top: 20px
+  .start
+    height: 20px
+    line-height: 20px
+    font-size: 12px
+  .avatar
+    > i.circle.btn.red
+      &:hover
+        background-color: #f1bbb8 !important
+    > i.circle.btn.green
+      &:hover
+        background-color: #b8f1bf !important
 
-.col.m1
-.col.m10
-  h4 コンテスト一覧
-  table.striped.bordered
-    thead
-      tr
-        - if current_user.admin?
-          th.ui data-field="edit" 編集
-          th.ui data-field="remove" 削除
-        th data-field="title" タイトル
-        th data-field="start_at" 開始日時
-        th data-field="end_at" 終了日時
-    tbody
+.contest-list
+  .col.m1
+  .col.m10
+    h4 コンテスト一覧
+    hr
+    ul.collection
       - @contests.each do |contest|
-        tr
-          - if current_user.admin?
-            td
-              .btn.waves-effect.waves-light.link
-                = link_to edit_admin_contest_path(contest.id) do
-                  i.fa.fa-edit
-            td
-              .btn.waves-effect.waves-light.link.red
-                = link_to(admin_contest_path(contest.id), method: :delete) do
-                  i.fa.fa-remove
-          td = contest.title
-          td = contest.start_at.strftime('%Y/%m/%d')
-          td = contest.end_at.strftime('%Y/%m/%d')
+        li.collection-item.avatar
+          - if contest.active?
+            - if current_user.admin?
+              = link_to admin_contest_passive_path(contest.id) do
+                i.circle.fa.fa-check.green.btn.btn-floating
+            - else
+              i.circle.fa.fa-check.green.btn.btn-floating
+            p.status 有効
+          - else
+            - if current_user.admin?
+              = link_to admin_contest_active_path(contest.id) do
+                i.circle.fa.fa-minus.red.btn.btn-floating
+            - else
+              i.circle.fa.fa-minus.red.btn.btn-floating
+            p.status 無効
+          p.title = contest.title
+          p.date
+            = '開始日時：' << contest.start_at.strftime('%Y/%m/%d')
+            br
+            = '終了日時：' << contest.end_at.strftime('%Y/%m/%d')
+          .secondary-content
+            - if current_user.admin?
+              = link_to(edit_admin_contest_path(contest.id)) do
+                i.fa.fa-edit
+                | 編集
+              span 　
+              = link_to(admin_contest_path(contest.id), method: :delete) do
+                i.fa.fa-remove
+                | 削除
+
+  / h4 コンテスト一覧
+  / table.striped.bordered
+  /   thead
+  /     tr
+  /       - if current_user.admin?
+  /         th.ui data-field="edit" 編集
+  /         th.ui data-field="remove" 削除
+  /       th data-field="title" タイトル
+  /       th.date data-field="start_at" 開始日時
+  /       th.date data-field="end_at" 終了日時
+  /   tbody
+  /     - @contests.each do |contest|
+  /       tr
+  /         - if current_user.admin?
+  /           td
+  /             .btn-floating.waves-effect.waves-light.link
+  /               = link_to edit_admin_contest_path(contest.id) do
+  /                 i.fa.fa-edit
+  /           td
+  /             .btn-floating.waves-effect.waves-light.link.red
+  /               = link_to(admin_contest_path(contest.id), method: :delete) do
+  /                 i.fa.fa-remove
+  /         td
+  /           span.title = contest.title
+  /         td
+  /           span = contest.start_at.strftime('%Y/%m/%d')
+  /         td
+  /           span = contest.end_at.strftime('%Y/%m/%d')
