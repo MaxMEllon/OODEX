@@ -41,6 +41,18 @@ RSpec.describe Admin::ContestsController, type: :controller do
     end
   end
 
+  describe 'DELETE #destroy' do
+    let(:contest) { create :contest }
+    before { sign_in admin }
+    subject do
+      ->(id) { delete :destroy, params: { id: id } }
+    end
+    it 'expect decrease Contest count when destroy contest' do
+      count = Contest.all.size
+      expect { subject[contest.id] }.to change(Contest, :count).by(count - 0)
+    end
+  end
+
   describe 'PUT #update' do
     let(:contest) { create :contest }
     let(:params) do
