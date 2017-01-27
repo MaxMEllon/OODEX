@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 class Admin::ContestsController < ApplicationController
   before_action :before_user_not_admin!
-  before_action :set_flash, only: :create
-  before_action :set_title, only: :create
-  before_action :set_start_at, only: :create
-  before_action :set_end_at, only: :create
+  before_action :set_flash, only: [:create, :update]
+  before_action :set_title, only: [:create, :update]
+  before_action :set_start_at, only: [:create, :update]
+  before_action :set_end_at, only: [:create, :update]
 
   def new
     @contest = Contest.new
+    @action = :create
+    @head = 'コンテストを作成する'
   end
 
   def create
@@ -17,25 +19,53 @@ class Admin::ContestsController < ApplicationController
       redirect_to new_admin_contest_path
       return false
     end
+    flash['notice'] = '作成しました'
     Contest.create(title: @title, start_at: @start_at, end_at: @end_at)
     redirect_to my_path
   end
 
   def active
-    @content = Contest.find(params[:contest_id])
-    @content.is_active = true
-    @content.save
+    toggle(true, '有効にしました')
     redirect_to my_path
   end
 
   def passive
-    @content = Contest.find(params[:contest_id])
-    @content.is_active = false
-    @content.save
+    toggle(false, '無効にしました')
+    redirect_to my_path
+  end
+
+  def edit
+    @contest = Contest.find(params[:id])
+    @action = :update
+    @head = 'コンテストを編集する'
+  end
+
+  def update
+    @contest = Contest.find(params[:id])
+    unless @flash.blank?
+      flash['alert'] = @flash.join(',') << 'が足りません'
+      redirect_to edit_admin_contest_path
+      return false
+    end
+    flash['notice'] = '更新しました'
+    @contest.update(title: @title, start_at: @start_at, end_at: @end_at)
+    redirect_to my_path
+  end
+
+  def destroy
+    @contest = Contest.find(params[:id])
+    @contest.destroy
     redirect_to my_path
   end
 
   private
+
+    def toggle(state, message = '')
+      @content = Contest.find(params[:id])
+      @content.is_active = state
+      flash['notice'] = message
+      @content.save
+    end
 
     def set_flash
       @flash = []
