@@ -14,11 +14,13 @@ AllCops:
 
 Metrics/ModuleLength:
   Exclude:
-    - "**/*_spec.rb"
+    - 'spec/spec_helper.rb'
+    - '**/*_spec.rb'
 
 Metrics/BlockLength:
   Exclude:
-    - "**/*_spec.rb"
+    - 'spec/spec_helper.rb'
+    - '**/*_spec.rb'
 
 Rails:
   Enabled: true
@@ -144,3 +146,6 @@ Lint/Degbugger:
 
 ClassAndModuleChildren:
   EnforcedStyle: compact
+
+Style/Lambda:
+    Enabled: false

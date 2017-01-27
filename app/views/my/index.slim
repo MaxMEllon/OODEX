@@ -18,13 +18,12 @@ sass:
     height: 20px
     line-height: 20px
     font-size: 12px
-  .avatar
-    > i.circle.btn.red
-      &:hover
-        background-color: #f1bbb8 !important
-    > i.circle.btn.green
-      &:hover
-        background-color: #b8f1bf !important
+  i.btn.red
+    &:hover
+      background-color: #f1bbb8 !important
+  i.btn.green
+    &:hover
+      background-color: #b8f1bf !important
 
 .contest-list
   .col.m1
@@ -36,14 +35,18 @@ sass:
         li.collection-item.avatar
           - if contest.active?
             - if current_user.admin?
-              = link_to admin_contest_passive_path(contest.id) do
+              = link_to(admin_contest_passive_path(contest.id),
+                method: :put,
+                remote: true) do
                 i.circle.fa.fa-check.green.btn.btn-floating
             - else
               i.circle.fa.fa-check.green.btn.btn-floating
             p.status 有効
           - else
             - if current_user.admin?
-              = link_to admin_contest_active_path(contest.id) do
+              = link_to(admin_contest_active_path(contest.id),
+                method: :put,
+                remote: true) do
                 i.circle.fa.fa-minus.red.btn.btn-floating
             - else
               i.circle.fa.fa-minus.red.btn.btn-floating
@@ -59,6 +62,9 @@ sass:
                 i.fa.fa-edit
                 | 編集
               span 　
-              = link_to(admin_contest_path(contest.id), method: :delete) do
+              = link_to(admin_contest_path(contest.id), 
+                method: :delete,
+                remote: true,
+                data: {confirm: '本当に削除しますか？'}) do
                 i.fa.fa-remove
                 | 削除

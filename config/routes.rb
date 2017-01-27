@@ -40,9 +40,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :contests, only: [:new, :create]
-    patch '/active/:contest_id' => 'contests#active', as: :contest_active
-    patch '/passive/:contest_id' => 'contests#passive', as: :contest_passive
+    resources :contests
+    put '/contests/active/:id' => 'contests#active', as: :contest_active
+    put '/contests/passive/:id' => 'contests#passive', as: :contest_passive
   end
 
   get 'my', to: 'my#index', as: :my

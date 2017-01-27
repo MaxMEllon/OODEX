@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'rails_helper'
+
 RSpec.describe Admin::ContestsController, type: :controller do
   let(:admin) { create :admin }
   let(:user) { create :user }
@@ -28,54 +29,80 @@ RSpec.describe Admin::ContestsController, type: :controller do
     end
   end
 
-  describe 'post #create' do
-    let(:contest) { build :contest }
+  describe 'GET #edit' do
+    let(:contest) { create :contest }
+    subject { get :edit, params: { id: contest.id } }
+    context 'admin user' do
+      before { sign_in admin }
+
+      it 'returns have_http_status' do
+        expect(subject).to have_http_status(200)
+      end
+    end
+  end
+
+  describe 'PUT #update' do
+    let(:contest) { create :contest }
     let(:params) do
-      {
-        start_at: contest.start_at.to_s,
-        end_at: contest.start_at.to_s,
-        title: contest.title
-      }
+      ->(id) do
+        {
+          id: id,
+          start_at: DateTime.now.iso8601,
+          end_at: DateTime.now.iso8601,
+          title: 'updated title'
+        }
+      end
     end
     before { sign_in admin }
-    subject { post :create, params: { contest: params } }
+
+    xit 'expect success when put modify titles' do
+      put :update, params: { contest: params[contest.id] }
+      expect(contest.find(contest.id).title).to eq('updated title')
+    end
+  end
+
+  describe 'POST #create' do
+    let(:c) { build :contest }
+    let(:params) do
+      ->(start_at: c.start_at.to_s, end_at: c.start_at.to_s, title: c.title) do
+        { start_at: start_at, end_at: end_at, title: title }
+      end
+    end
+    before { sign_in admin }
+    subject { post :create, params: { contest: params[] } }
 
     it 'redirect to my path if create success of contest' do
-      expect do
-        subject
-      end.to change(Contest, :count).by(1)
+      count = Contest.count
+      expect { subject }.to change(Contest, :count).by(count + 1)
     end
 
     it 'fail create when start_at empty' do
-      fail_params = params.delete(:start_at)
-      post :create, params: { contest: fail_params }
+      post :create, params: { contest: params[start_at: nil] }
       expect(flash['alert']).to match('開始日時')
     end
 
     it 'fail create when end_at empty' do
-      fail_params = params.delete(:end_at)
-      post :create, params: { contest: fail_params }
+      post :create, params: { contest: params[end_at: nil] }
       expect(flash['alert']).to match('終了日時')
     end
 
     it 'fail create when title empty' do
-      fail_params = params.delete(:title)
-      post :create, params: { contest: fail_params }
+      post :create, params: { contest: params[title: nil] }
       expect(flash['alert']).to match('タイトル')
     end
   end
 
-  describe 'patch #active/#passive' do
+  describe 'PUT #active/#passive' do
     let(:contest) { create :contest }
     before { sign_in admin }
 
     it 'expect success when execute to patch of active' do
-      patch :active, params: { contest_id: Contest.last.id }
+      patch :active, params: { id: contest.id }
       expect(Contest.last.active?).to be(true)
     end
 
     it 'expect success when execute to patch of passive' do
-      patch :passive, params: { contest_id: Contest.last.id }
+      patch :passive, params: { id: contest.id }
       expect(Contest.last.active?).to be(false)
     end
   end
