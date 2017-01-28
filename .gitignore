@@ -25,3 +25,5 @@ node_modules
 dump.rdb
 examples.txt
 /coverage
+/public/*.js
+/public/assets/
