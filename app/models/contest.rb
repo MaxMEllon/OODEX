@@ -8,6 +8,7 @@
 #  id         :integer          not null, primary key
 #  is_active  :boolean          default(FALSE), not null
 #  start_at   :datetime         not null
+#  title      :string           not null
 #  updated_at :datetime         not null
 #
 
