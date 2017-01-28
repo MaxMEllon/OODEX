@@ -5,8 +5,12 @@ test:
     - bundle exec rspec
     - bundle exec codeclimate-test-reporter
     # front
-    - cd client && npm install && npm run lint
-    
+    - cd client && yarn run lint
+
+machine:
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:${HOME}/${CIRCLE_PROJECT_REPONAME}/client/node_modules/.bin"
+
 machine:
   ruby:
     version: 2.4.0
@@ -15,5 +19,11 @@ machine:
   timezone: Asia/Tokyo
 
 dependencies:
+  override:
+    - yarn
+    - cd client && yarn
+    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3 
+  cache_directories:
+    - ~/.cache/yarn
   pre:
     - gem install bundler

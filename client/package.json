@@ -9,9 +9,9 @@
   "scripts": {
     "lint": "eslint src/",
     "lint:fast": "eslint_d --fix src/",
-    "build:test": "webpack --config webpack.config.js",
-    "build:production": "NODE_ENV=production webpack --config webpack.config.js",
-    "build:development": "webpack -w --config webpack.config.js",
+    "build:test": "webpack --config webpack.config.babel.js",
+    "build:production": "NODE_ENV=production webpack --config webpack.config.babel.js",
+    "build:development": "webpack -w --config webpack.config.babel.js",
     "build:server": "node server.js"
   },
   "cacheDirectories": [
