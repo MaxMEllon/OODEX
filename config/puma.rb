@@ -5,8 +5,14 @@ threads 8, 32
 
 application_path = File.expand_path('../..', __FILE__)
 
+environment ENV.fetch('RAILS_ENV') { 'development' }
+
+preload_app!
+
 bind "unix://#{application_path}/tmp/puma.sock"
 
-environment ENV.fetch('RAILS_ENV') { 'development' }
+before_fork do
+  Dotenv.overload
+end
 
 plugin :tmp_restart
