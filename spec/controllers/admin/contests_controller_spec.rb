@@ -42,18 +42,18 @@ RSpec.describe Admin::ContestsController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    let(:contest) { create :contest }
     before { sign_in admin }
     subject do
       ->(id) { delete :destroy, params: { id: id } }
     end
     it 'expect decrease Contest count when destroy contest' do
-      count = Contest.all.size
-      expect { subject[contest.id] }.to change(Contest, :count).by(count - 0)
+      contest = create :contest
+      expect { subject[contest.id] }.to change(Contest, :count).by(-1)
     end
   end
 
   describe 'PUT #update' do
+    let(:contest) { create :contest }
     let(:params) do
       {
         start_at: DateTime.now.iso8601,
@@ -64,9 +64,14 @@ RSpec.describe Admin::ContestsController, type: :controller do
     before { sign_in admin }
 
     it 'expect success when put modify titles' do
-      contest = create :contest
       put :update, params: { id: contest.id, contest: params }
       expect(Contest.find(contest.id).title).to eq('updated title')
+    end
+
+    it 'expect fail when put not enough params' do
+      fail_params = params.delete(:start_at)
+      put :update, params: { id: contest.id, contest: fail_params }
+      expect(flash['alert']).to match('開始日時')
     end
   end
 
