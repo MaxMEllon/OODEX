@@ -54,22 +54,19 @@ RSpec.describe Admin::ContestsController, type: :controller do
   end
 
   describe 'PUT #update' do
-    let(:contest) { create :contest }
     let(:params) do
-      ->(id) do
-        {
-          id: id,
-          start_at: DateTime.now.iso8601,
-          end_at: DateTime.now.iso8601,
-          title: 'updated title'
-        }
-      end
+      {
+        start_at: DateTime.now.iso8601,
+        end_at: DateTime.now.iso8601,
+        title: 'updated title'
+      }
     end
     before { sign_in admin }
 
-    xit 'expect success when put modify titles' do
-      put :update, params: { contest: params[contest.id] }
-      expect(contest.find(contest.id).title).to eq('updated title')
+    it 'expect success when put modify titles' do
+      contest = create :contest
+      put :update, params: { id: contest.id, contest: params }
+      expect(Contest.find(contest.id).title).to eq('updated title')
     end
   end
 
