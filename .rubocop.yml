@@ -6,6 +6,7 @@ AllCops:
     - '**/config.ru'
     - '**/Gemfile'
   Exclude:
+    - 'config/puma.rb'
     - 'db/**/*'
     - 'bin/*'
     - 'config/**/*'

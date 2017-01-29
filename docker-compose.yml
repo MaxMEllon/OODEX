@@ -1,0 +1,17 @@
+version: '2'
+services:
+  db:
+    image: postgres
+  app:
+    build: .
+    env_file: .env
+    command: rails s -p 5000 -b '0.0.0.0'
+    volumes:
+      - .:/TEE
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+      - cache
+  cache:
+    image: redis

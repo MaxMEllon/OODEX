@@ -1,0 +1,26 @@
+version: '2'
+services:
+  db:
+    image: postgres
+  cache:
+    image: redis
+  app:
+    build: .
+    environment:
+      RAILS_ENV: production
+      NODE_ENV: production
+    env_file: .env
+    command: rails s -b '0.0.0.0' -p 5000
+    volumes:
+      - .:/TEE
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+      - cache
+  web:
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/conf.d
