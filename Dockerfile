@@ -23,4 +23,4 @@ RUN rm /TEE/config/database.yml
 COPY config/database.docker.yml /TEE/config/database.yml
 
 RUN bundle exec rake assets:precompile
-RUN mkdir -p tmp/
+RUN mkdir -p /tmp/sockets && mkdir -p /tmp/pids

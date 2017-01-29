@@ -9,7 +9,7 @@ environment ENV.fetch('RAILS_ENV') { 'development' }
 
 preload_app!
 
-bind "unix://#{application_path}/tmp/puma.sock"
+bind "unix:///tmp/sockets/puma.sock"
 
 before_fork do
   Dotenv.overload
