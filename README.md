@@ -5,7 +5,8 @@
 About
 ---
 
-**T**eam **E**ducation **E**xrc for Software enginnering.
+TEE is a Exercise System of Team Development and OOP for Beginner Java Engineer.
+
 
 Status
 ---
