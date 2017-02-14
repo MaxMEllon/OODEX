@@ -58,6 +58,16 @@ $ bundle exec rails server
 $ cd client && npm run build:development
 ```
 
+- with docker
+
+```bash
+$ docker-compose build
+$ docker-compose up
+$ docker-compose run app bundle exec rails db:create
+$ docker-compose run app bundle exec rails db:migrate
+$ docker-compose run app bundle exec rails db:seed
+```
+
 LICENSE
 ---
 
