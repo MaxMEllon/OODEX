@@ -17,6 +17,7 @@ tmp
 
 .dockerignore
 docker-compose.yml
+docker-compose.prod.yml
 Dockerfile
 
 puma.sock
