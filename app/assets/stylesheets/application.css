@@ -2,6 +2,7 @@
  *= require flatpickr/dist/flatpickr.min.css
  *= require materialize-css/dist/css/materialize.min.css
  *= require nprogress/nprogress.css
+ *= require animate.css/animate.min.css
  *= require font-awesome
  *= require_tree .
  *= require_self

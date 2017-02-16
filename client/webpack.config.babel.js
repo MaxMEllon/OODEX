@@ -23,7 +23,7 @@ const config = {
 
   output: {
     filename: 'webpack-bundle.js',
-    path: './../public',
+    path: '/../public',
     publicPath: 'http://localhost:3000/'
   },
 

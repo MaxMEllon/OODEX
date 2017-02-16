@@ -1,0 +1,21 @@
+sass:
+  .modal
+    z-index: 10000
+    position: absolute
+  .btn.modal-action.modal-close.waves-effect.waves-green.btn-flat.red
+    color: white
+  h5.header
+    font-weight: 700
+
+.modal#modal-confirm
+  .modal-content
+    h5.header
+    hr
+    p.body
+  .modal-footer
+    .buttons
+      .btn.modal-action.modal-close.waves-effect.waves-green.btn-flat.gray data-modal-result='false'
+        | いいえ
+      span　
+      .btn.modal-action.modal-close.waves-effect.waves-green.btn-flat.red data-modal-result='true'
+        | はい

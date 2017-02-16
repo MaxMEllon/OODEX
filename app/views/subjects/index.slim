@@ -1,0 +1,17 @@
+sass:
+  span.subject-is-empty
+    font-size: 20px
+
+.subject-list
+  .col.m1
+  .col.m10
+    h4 課題一覧
+    hr
+    - if @subjects.blank?
+      span.subject-is-empty
+        | 登録された問題はありません
+    - else
+      ul.collection
+        - @subjects.each do |subject|
+          li
+            = subject.title

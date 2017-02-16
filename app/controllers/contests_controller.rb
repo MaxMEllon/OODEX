@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class Admin::ContestsController < ApplicationController
+class ContestsController < ApplicationController
   before_action :before_user_not_admin!
   before_action :set_flash, only: [:create, :update]
   before_action :set_title, only: [:create, :update]
@@ -54,6 +54,7 @@ class Admin::ContestsController < ApplicationController
 
   def destroy
     @contest = Contest.find(params[:id])
+    flash['notice'] = "コンテスト `#{@contest.title}` を削除しました"
     @contest.destroy
     redirect_to my_path
   end

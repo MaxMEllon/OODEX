@@ -1,0 +1,30 @@
+sass:
+  .subject-form
+    margin-top: 15px
+  .submit-btn
+    > input
+      line-height: 30px
+
+.subject-form
+  .col.m1
+  .col.m10
+    .card
+      .row.card-content.subject-new-form
+        .card-title
+          span = @head
+        hr
+        = form_for(@subject, url: {action: @action}, remote: true) do |f|
+          .input-field.col.s12
+            = f.text_field :title
+            label for='subject_title'
+              | タイトル
+          .input-field.col.s12
+            = f.text_field :detail
+            label for='subject_detail'
+              | 詳細
+          input.submit-btn.waves-effect.waves-light.btn.right[
+            type='submit'
+            name='commit'
+            value="#{@action == :create ? '登録する' : '更新する'}"
+            ]
+  .col.m1
