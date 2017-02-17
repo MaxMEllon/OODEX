@@ -16,7 +16,7 @@ class ContestsController < ApplicationController
     unless @flash.blank?
       flash['alert'] = @flash.join(',') << 'が足りません'
       @contest = Contest.new
-      redirect_to new_admin_contest_path
+      redirect_to new_contest_path
       return false
     end
     flash['notice'] = '作成しました'
@@ -44,7 +44,7 @@ class ContestsController < ApplicationController
     @contest = Contest.find(params[:id])
     unless @flash.blank?
       flash['alert'] = @flash.join(',') << 'が足りません'
-      redirect_to edit_admin_contest_path
+      redirect_to edit_contest_path
       return false
     end
     flash['notice'] = '更新しました'
