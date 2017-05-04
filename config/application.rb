@@ -22,6 +22,7 @@ module TEE
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
     config.active_record.time_zone_aware_types = [:datetime, :time]
+    config.assets.initialize_on_precompile = false
     config.sass.preferred_syntax = :sass
     config.sass.cache = true
     config.i18n.default_locale = :ja
