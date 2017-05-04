@@ -4,6 +4,7 @@ RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && apt-get update -qq
 
 RUN mkdir /TEE
 WORKDIR /TEE
+ENV RAILS_ENV production
 
 COPY Gemfile /TEE
 COPY Gemfile.lock /TEE
