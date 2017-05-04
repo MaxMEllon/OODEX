@@ -16,7 +16,7 @@ require 'sprockets/railtie'
 
 Bundler.require(*Rails.groups)
 
-Dotenv::Railtie.load if Rails.env != production
+Dotenv::Railtie.load if Rails.env == 'production'
 
 module TEE
   class Application < Rails::Application
