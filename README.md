@@ -14,7 +14,7 @@ Status
 | type | badge |
 |:---:|:---:|
 | codacy | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8ce1eaa6faef4435925db6e12d845b3b)](https://www.codacy.com/app/MaxMEllon/TEE?utm_source=github.com&utm_medium=referral&utm_content=MaxMEllon/TEE&utm_campaign=badger) |
-| circle-ci | [![CircleCI](https://img.shields.io/circleci/project/github/MaxMEllon/TEE.svg)](https://circleci.com/gh/MaxMEllon/TEE) |
+| circle-ci | [![CircleCI](https://img.shields.io/circleci/project/github/MaxMEllon/OODEX.svg)](https://circleci.com/gh/MaxMEllon/OODEX) |
 | codeclimate | [![Code Climate](https://img.shields.io/codeclimate/github/MaxMEllon/TEE.svg)](https://codeclimate.com/github/MaxMEllon/TEE) |
 | hakiri | [![security](https://hakiri.io/github/MaxMEllon/TEE/master.svg)](https://hakiri.io/github/MaxMEllon/TEE/master) |
 
