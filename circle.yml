@@ -31,8 +31,8 @@ test:
 deployment:
   deployment:
     branch: master
-      commands:
-        - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-        - docker build -t maxmellon/oodex .
-        - docker tag maxmellon/oodex:latest maxmellon/oodex
-        - docker push maxmellon oodex
+    commands:
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker build -t maxmellon/oodex .
+      - docker tag maxmellon/oodex:latest maxmellon/oodex
+      - docker push maxmellon oodex
