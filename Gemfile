@@ -37,6 +37,7 @@ end
 # gem 'jbuilder', '~> 2.5'
 gem 'annotate'
 gem 'coffee-rails', '~> 4.2'
+# gem 'data-confirm-modal'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'font-awesome-rails'

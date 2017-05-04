@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class Admin::ContestsController < ApplicationController
+class ContestsController < ApplicationController
   before_action :before_user_not_admin!
   before_action :set_flash, only: [:create, :update]
   before_action :set_title, only: [:create, :update]
@@ -16,7 +16,7 @@ class Admin::ContestsController < ApplicationController
     unless @flash.blank?
       flash['alert'] = @flash.join(',') << 'が足りません'
       @contest = Contest.new
-      redirect_to new_admin_contest_path
+      redirect_to new_contest_path
       return false
     end
     flash['notice'] = '作成しました'
@@ -44,7 +44,7 @@ class Admin::ContestsController < ApplicationController
     @contest = Contest.find(params[:id])
     unless @flash.blank?
       flash['alert'] = @flash.join(',') << 'が足りません'
-      redirect_to edit_admin_contest_path
+      redirect_to edit_contest_path
       return false
     end
     flash['notice'] = '更新しました'
@@ -54,6 +54,7 @@ class Admin::ContestsController < ApplicationController
 
   def destroy
     @contest = Contest.find(params[:id])
+    flash['notice'] = "コンテスト `#{@contest.title}` を削除しました"
     @contest.destroy
     redirect_to my_path
   end

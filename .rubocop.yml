@@ -88,7 +88,7 @@ Style/SpaceAroundOperators:
   Enabled: true
 
 Style/SpaceBeforeFirstArg:
-    Enabled: true
+  Enabled: true
 
 # Defining a method with parameters needs parentheses.
 Style/MethodDefParentheses:
@@ -149,4 +149,4 @@ ClassAndModuleChildren:
   EnforcedStyle: compact
 
 Style/Lambda:
-    Enabled: false
+  Enabled: false

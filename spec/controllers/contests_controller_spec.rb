@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Admin::ContestsController, type: :controller do
+RSpec.describe ContestsController, type: :controller do
   let(:admin) { create :admin }
   let(:user) { create :user }
 
