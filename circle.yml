@@ -8,6 +8,8 @@ test:
     - cd client && yarn run lint
 
 machine:
+  services:
+    - docker
   environment:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:${HOME}/${CIRCLE_PROJECT_REPONAME}/client/node_modules/.bin"
 
@@ -22,7 +24,13 @@ dependencies:
   override:
     - yarn
     - cd client && yarn
-    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3 
+    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+
+    # docker
+    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+    - docker build -t maxmellon/oodex .
+    - docker tag maxmellon/oodex:latest maxmellon/oodex
+    - docker push maxmellon oodex
   cache_directories:
     - ~/.cache/yarn
   pre:
