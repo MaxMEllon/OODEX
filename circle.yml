@@ -1,15 +1,17 @@
 machine:
+  services:
+    - docker
   ruby:
     version: 2.4.0
   node:
     version: 6.9.0
   timezone: Asia/Tokyo
-  services:
-    - docker
   environment:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin:${HOME}/${CIRCLE_PROJECT_REPONAME}/client/node_modules/.bin"
 
 dependencies:
+  pre:
+    - gem install bundler
   override:
     - yarn
     - cd client && yarn
@@ -34,5 +36,3 @@ deployment:
         - docker build -t maxmellon/oodex .
         - docker tag maxmellon/oodex:latest maxmellon/oodex
         - docker push maxmellon oodex
-  pre:
-    - gem install bundler
