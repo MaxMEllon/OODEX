@@ -6,11 +6,8 @@ RUN mkdir /TEE
 WORKDIR /TEE
 ENV RAILS_ENV production
 
-COPY Gemfile /TEE
-COPY Gemfile.lock /TEE
-COPY yarn.lock /TEE
+COPY Gemfile Gemfile.lock yarn.lock /TEE/
 COPY client/yarn.lock /TEE/client/yarn.lock
-
 RUN bundle install -j4
 
 COPY . /TEE

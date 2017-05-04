@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails'
@@ -15,21 +16,18 @@ require 'sprockets/railtie'
 
 Bundler.require(*Rails.groups)
 
-# Dotenv::Railtie.load
+Dotenv::Railtie.load if Rails.env != 'production'
 
-module TEE
-  class Application < Rails::Application
-    config.time_zone = 'Tokyo'
-    config.active_record.default_timezone = :local
-    config.active_record.time_zone_aware_types = [:datetime, :time]
-    config.assets.initialize_on_precompile = false
-    config.sass.preferred_syntax = :sass
-    config.sass.cache = true
-    config.i18n.default_locale = :ja
+class TEE::Application < Rails::Application
+  config.time_zone = 'Tokyo'
+  config.active_record.default_timezone = :local
+  config.active_record.time_zone_aware_types = %i[datetime time]
+  config.sass.preferred_syntax = :sass
+  config.sass.cache = true
+  config.i18n.default_locale = :ja
 
-    config.generators do |g|
-      g.helper false
-      g.assets false
-    end
+  config.generators do |g|
+    g.helper false
+    g.assets false
   end
 end
