@@ -22,4 +22,6 @@ Devise.setup do |config|
   config.sign_out_via = :delete
 
   config.scoped_views = true
+
+  config.secret_key = 'a6006e784ceb7dcaca4cc5235cab5f1c9b938437d5936cf0d0e8db9ce0fa9200cea43787c30745bf0f47509d800d74a1a6a125292bde9f952e1518e8c1b477a8'
 end
