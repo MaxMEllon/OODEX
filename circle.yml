@@ -22,7 +22,13 @@ dependencies:
   override:
     - yarn
     - cd client && yarn
-    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3 
+    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+
+    # docker
+    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+    - docker build -t maxmellon/oodex .
+    - docker tag maxmellon/oodex:latest maxmellon/oodex
+    - docker push maxmellon oodex
   cache_directories:
     - ~/.cache/yarn
   pre:
