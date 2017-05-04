@@ -2,6 +2,8 @@ version: '2'
 services:
   db:
     image: postgres
+    volumes:
+      - ./docker/postgres.dev:/var/lib/postgresql/data
   cache:
     image: redis
   app:
