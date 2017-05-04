@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class SubjectsController < ApplicationController
   before_action :set_contest
   before_action :set_flash, only: [:create]

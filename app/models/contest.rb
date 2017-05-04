@@ -13,6 +13,7 @@
 #
 
 # frozen_string_literal: true
+
 class Contest < ApplicationRecord
   has_many :teams
   has_many :subjects

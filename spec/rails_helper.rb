@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'spec_helper'
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|

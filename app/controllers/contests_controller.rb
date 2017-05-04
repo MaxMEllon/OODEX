@@ -1,10 +1,11 @@
 # frozen_string_literal: true
+
 class ContestsController < ApplicationController
   before_action :before_user_not_admin!
-  before_action :set_flash, only: [:create, :update]
-  before_action :set_title, only: [:create, :update]
-  before_action :set_start_at, only: [:create, :update]
-  before_action :set_end_at, only: [:create, :update]
+  before_action :set_flash, only: %i[create update]
+  before_action :set_title, only: %i[create update]
+  before_action :set_start_at, only: %i[create update]
+  before_action :set_end_at, only: %i[create update]
 
   def new
     @contest = Contest.new
@@ -13,7 +14,7 @@ class ContestsController < ApplicationController
   end
 
   def create
-    unless @flash.blank?
+    if @flash.present?
       flash['alert'] = @flash.join(',') << 'が足りません'
       @contest = Contest.new
       redirect_to new_contest_path
@@ -42,7 +43,7 @@ class ContestsController < ApplicationController
 
   def update
     @contest = Contest.find(params[:id])
-    unless @flash.blank?
+    if @flash.present?
       flash['alert'] = @flash.join(',') << 'が足りません'
       redirect_to edit_contest_path
       return false
