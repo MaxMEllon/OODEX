@@ -9,7 +9,7 @@ services:
   app:
     build: .
     env_file: .env
-    command: bundle exec rails s -p 5555 -b '0.0.0.0'
+    command: bundle exec puma -C config/puma.rb
     environment:
       RAILS_ENV: production
       NODE_ENV: production

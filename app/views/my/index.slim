@@ -68,7 +68,7 @@ sass:
                 i.fa.fa-edit
                 | 編集
               span 　
-              = link_to(contest_path(contest.id), 
+              = link_to(contest_path(contest.id),
                 method: :delete,
                 remote: true,
                 data: {confirm: "コンテスト#{contest.title}を削除します．よろしいですか？"}) do

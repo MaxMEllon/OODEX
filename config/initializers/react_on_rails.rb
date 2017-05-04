@@ -13,7 +13,7 @@ ReactOnRails.configure do |config|
   config.raise_on_prerender_error = false
   config.server_renderer_pool_size = 1 # increase if you're on JRuby
   config.server_renderer_timeout = 20 # seconds
-  config.i18n_dir = Rails.root.join('client', 'app', 'libs', 'i18n')
+  # config.i18n_dir = Rails.root.join('client', 'app', 'libs', 'i18n')
   config.skip_display_none = false
   config.server_render_method = 'NodeJS'
   config.symlink_non_digested_assets_regex =

@@ -2,6 +2,7 @@
 
 workers 3
 threads 8, 32
+port 3000
 
 application_path = File.expand_path('../..', __FILE__)
 
@@ -11,8 +12,8 @@ preload_app!
 
 # bind "unix:///tmp/sockets/puma.sock"
 
-before_fork do
-  Dotenv.overload
-end
+# before_fork do
+#   Dotenv.overload
+# end
 
 plugin :tmp_restart
